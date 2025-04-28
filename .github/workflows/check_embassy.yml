@@ -21,7 +21,7 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
-    name: "Check Embassy Slot - Run at ${{ github.event.schedule }} - ${{ steps.get-time.outputs.current_time }}"
+    name: "Check Embassy Slot - Run at ${{ github.event.schedule }} - ${{ steps.set-time.outputs.current_time }}"
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -39,7 +39,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Get current time
-        id: get-time
+        id: set-time
         run: echo "current_time=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
 
       - name: Run script
