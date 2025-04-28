@@ -21,6 +21,7 @@ on:
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    name: "Check Embassy Slot - Run at ${{ github.event.schedule }} - ${{ steps.get-time.outputs.current_time }}"
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -36,6 +37,10 @@ jobs:
           sudo apt-get install -y chromium-browser chromium-chromedriver
           pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Get current time
+        id: get-time
+        run: echo "current_time=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
 
       - name: Run script
         env:
