@@ -57,7 +57,6 @@ def main():
     main_page.click_select_appointment_button()
     appointments_available = main_page.is_available_appointment_found()
     driver.quit()
-    time.sleep(5 * 60)
 
 
 logger.info("START SCRIPT:")

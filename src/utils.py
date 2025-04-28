@@ -35,6 +35,9 @@ def check_proxy(proxy_string):
         }
 
         chrome_options = Options()
+        chrome_options.binary_location = "/usr/bin/chromium"
+        # service = Service("/usr/bin/chromedriver")
+
         # chrome_options.add_argument('--headless')
         chrome_options.add_argument('--headless')  # Отключаем UI
         chrome_options.add_argument('--disable-gpu')  # Отключаем GPU, если нужно
@@ -47,7 +50,7 @@ def check_proxy(proxy_string):
         chrome_options.add_experimental_option("prefs", prefs)
 
         driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()),
+            service=Service("/usr/bin/chromedriver"),
             options=chrome_options,
             seleniumwire_options=seleniumwire_options
         )

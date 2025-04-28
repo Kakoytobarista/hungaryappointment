@@ -1,0 +1,88 @@
+2025-04-28 20:21:05 - START SCRIPT:
+2025-04-28 20:21:05 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-04-28 20:21:05 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:07 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-04-28 20:21:07 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:09 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-04-28 20:21:09 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:20 - START SCRIPT:
+2025-04-28 20:21:20 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-04-28 20:21:20 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:22 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: Unable to obtain driver for chrome; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors/driver_location
+
+2025-04-28 20:21:22 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:38 - START SCRIPT:
+2025-04-28 20:21:39 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: session not created
+from unknown error: no chrome binary at /usr/bin/chromium
+Stacktrace:
+0   chromedriver                        0x00000001031f6a54 cxxbridge1$str$ptr + 2803960
+1   chromedriver                        0x00000001031eecf0 cxxbridge1$str$ptr + 2771860
+2   chromedriver                        0x0000000102d3a864 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000102d6b3bc cxxbridge1$string$len + 292540
+4   chromedriver                        0x0000000102d69ce4 cxxbridge1$string$len + 286692
+5   chromedriver                        0x0000000102dae820 cxxbridge1$string$len + 568096
+6   chromedriver                        0x0000000102dae090 cxxbridge1$string$len + 566160
+7   chromedriver                        0x0000000102d757ec cxxbridge1$string$len + 334572
+8   chromedriver                        0x00000001031bbccc cxxbridge1$str$ptr + 2562928
+9   chromedriver                        0x00000001031bef98 cxxbridge1$str$ptr + 2575932
+10  chromedriver                        0x000000010319c2c4 cxxbridge1$str$ptr + 2433384
+11  chromedriver                        0x00000001031bf810 cxxbridge1$str$ptr + 2578100
+12  chromedriver                        0x000000010318d2f0 cxxbridge1$str$ptr + 2371988
+13  chromedriver                        0x00000001031df57c cxxbridge1$str$ptr + 2708512
+14  chromedriver                        0x00000001031df708 cxxbridge1$str$ptr + 2708908
+15  chromedriver                        0x00000001031ee93c cxxbridge1$str$ptr + 2770912
+16  libsystem_pthread.dylib             0x0000000181d72034 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000181d6ce3c thread_start + 8
+
+2025-04-28 20:21:39 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:41 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: session not created
+from unknown error: no chrome binary at /usr/bin/chromium
+Stacktrace:
+0   chromedriver                        0x0000000100a4ea54 cxxbridge1$str$ptr + 2803960
+1   chromedriver                        0x0000000100a46cf0 cxxbridge1$str$ptr + 2771860
+2   chromedriver                        0x0000000100592864 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001005c33bc cxxbridge1$string$len + 292540
+4   chromedriver                        0x00000001005c1ce4 cxxbridge1$string$len + 286692
+5   chromedriver                        0x0000000100606820 cxxbridge1$string$len + 568096
+6   chromedriver                        0x0000000100606090 cxxbridge1$string$len + 566160
+7   chromedriver                        0x00000001005cd7ec cxxbridge1$string$len + 334572
+8   chromedriver                        0x0000000100a13ccc cxxbridge1$str$ptr + 2562928
+9   chromedriver                        0x0000000100a16f98 cxxbridge1$str$ptr + 2575932
+10  chromedriver                        0x00000001009f42c4 cxxbridge1$str$ptr + 2433384
+11  chromedriver                        0x0000000100a17810 cxxbridge1$str$ptr + 2578100
+12  chromedriver                        0x00000001009e52f0 cxxbridge1$str$ptr + 2371988
+13  chromedriver                        0x0000000100a3757c cxxbridge1$str$ptr + 2708512
+14  chromedriver                        0x0000000100a37708 cxxbridge1$str$ptr + 2708908
+15  chromedriver                        0x0000000100a4693c cxxbridge1$str$ptr + 2770912
+16  libsystem_pthread.dylib             0x0000000181d72034 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000181d6ce3c thread_start + 8
+
+2025-04-28 20:21:41 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:44 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000: Message: session not created
+from unknown error: no chrome binary at /usr/bin/chromium
+Stacktrace:
+0   chromedriver                        0x00000001026caa54 cxxbridge1$str$ptr + 2803960
+1   chromedriver                        0x00000001026c2cf0 cxxbridge1$str$ptr + 2771860
+2   chromedriver                        0x000000010220e864 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010223f3bc cxxbridge1$string$len + 292540
+4   chromedriver                        0x000000010223dce4 cxxbridge1$string$len + 286692
+5   chromedriver                        0x0000000102282820 cxxbridge1$string$len + 568096
+6   chromedriver                        0x0000000102282090 cxxbridge1$string$len + 566160
+7   chromedriver                        0x00000001022497ec cxxbridge1$string$len + 334572
+8   chromedriver                        0x000000010268fccc cxxbridge1$str$ptr + 2562928
+9   chromedriver                        0x0000000102692f98 cxxbridge1$str$ptr + 2575932
+10  chromedriver                        0x00000001026702c4 cxxbridge1$str$ptr + 2433384
+11  chromedriver                        0x0000000102693810 cxxbridge1$str$ptr + 2578100
+12  chromedriver                        0x00000001026612f0 cxxbridge1$str$ptr + 2371988
+13  chromedriver                        0x00000001026b357c cxxbridge1$str$ptr + 2708512
+14  chromedriver                        0x00000001026b3708 cxxbridge1$str$ptr + 2708908
+15  chromedriver                        0x00000001026c293c cxxbridge1$str$ptr + 2770912
+16  libsystem_pthread.dylib             0x0000000181d72034 _pthread_start + 136
+17  libsystem_pthread.dylib             0x0000000181d6ce3c thread_start + 8
+
+2025-04-28 20:21:44 - Ошибка с прокси package-272340-country-rs-opt-wb:g4iqzdruD5HezJUa@proxy.soax.com:5000, пробуем снова...
+2025-04-28 20:21:56 - START SCRIPT:
