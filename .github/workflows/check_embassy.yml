@@ -1,13 +1,22 @@
 name: Check Embassy Slot
 
 on:
+  schedule:
+    # Понедельник-четверг: утро
+    - cron: '*/5 6-10 * * 1-4'
+    # Понедельник-четверг: день
+    - cron: '*/5 11-14 * * 1-4'
+    - cron: '*/5 14 * * 1-4'  # отдельно 14:00-14:30
+
+    # Пятница: утро
+    - cron: '*/5 6-10 * * 5'
+    # Пятница: день
+    - cron: '*/5 11 * * 5'
+
+  workflow_dispatch:
   push:
     branches:
       - main
-  schedule:
-    - cron: '*/5 * * * *'
-  workflow_dispatch:
-
 
 jobs:
   run-script:
