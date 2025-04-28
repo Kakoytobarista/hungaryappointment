@@ -18,7 +18,7 @@ def load_proxies(file_path):
 def get_random_proxy(proxies):
     return random.choice(proxies)
 
-def check_proxy(proxy_string):
+def check_proxy(proxy_string, docker=False):
     try:
         user_info, host_port = proxy_string.split('@')
         username, password = user_info.split(':')
@@ -35,8 +35,11 @@ def check_proxy(proxy_string):
         }
 
         chrome_options = Options()
-        chrome_options.binary_location = "/usr/bin/chromium"
-        # service = Service("/usr/bin/chromedriver")
+        if docker:
+            chrome_options.binary_location = "/usr/bin/chromium-browser"
+            service = Service("/usr/lib/chromium-browser/chromedriver")
+        else:
+            service = Service(ChromeDriverManager().install())
 
         # chrome_options.add_argument('--headless')
         chrome_options.add_argument('--headless')  # Отключаем UI
@@ -50,7 +53,7 @@ def check_proxy(proxy_string):
         chrome_options.add_experimental_option("prefs", prefs)
 
         driver = webdriver.Chrome(
-            service=Service("/usr/bin/chromedriver"),
+            service=service,
             options=chrome_options,
             seleniumwire_options=seleniumwire_options
         )

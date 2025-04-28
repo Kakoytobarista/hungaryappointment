@@ -55,7 +55,7 @@ def main():
 
     # Нажимаем "Select date"
     main_page.click_select_appointment_button()
-    appointments_available = main_page.is_available_appointment_found()
+    main_page.is_available_appointment_found()
     driver.quit()
 
 
