@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import datetime
 
 from src.logger import logger
 from src.parsing import MainPage
@@ -9,6 +10,7 @@ from src.utils import get_random_proxy, load_proxies, check_proxy
 def main():
     proxies_path = os.path.abspath('proxies.txt')
     proxy_list = load_proxies(proxies_path)
+    logger.info(f'RUN AT {datetime.now()}')
 
     while True:
         proxy_string = get_random_proxy(proxy_list)
