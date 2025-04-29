@@ -81,3 +81,4 @@ def main(use_proxy: bool = False):
 
 logger.info("START SCRIPT:")
 main()
+
