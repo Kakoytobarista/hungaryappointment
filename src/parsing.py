@@ -94,26 +94,28 @@ class BaseElementActions:
 
 class SelectConsulateModal(BaseElementActions):
     ELEMENT = '//h5[contains(normalize-space(text()), "Please select a Consulate")]/../..'
-    TARGET_EMBASSY_SUB = '//input[@id="f05149cd-51b4-417d-912b-9b8e1af999b6"]'
+    SUBBOTICA_EMBASSY = '//input[@id="f05149cd-51b4-417d-912b-9b8e1af999b6"]'
+    BELGRADE_EMBASSY = '//input[@id="22c5017f-589b-4e30-8347-cc2226fb4572"]'
 
     def __init__(self, driver):
         super().__init__(driver)
 
-    def select_target_embassy(self):
-        self.click(self.ELEMENT + self.TARGET_EMBASSY_SUB)
+    def select_target_embassy(self, target_embassy: str = SUBBOTICA_EMBASSY):
+        self.click(self.ELEMENT + target_embassy)
         return MainPage(self.driver)
 
 
 class SelectTypeOfApplicationModal(BaseElementActions):
     ELEMENT = '//h5[contains(normalize-space(text()), "Applications")]/../..'
     TARGET_TYPE_OF_APPLICATION_VISA_D = '//input[@id="f99c16f2-fc31-49ed-8fd8-e044f6500b14"]'
+    TARGET_TYPE_OF_APPLICATION_BELGRADE_VISA_D = '//input[@id="4a8de950-f963-449d-9edd-7840a66f3766"]'
     SAVE_BTN = '//button[@class="btn btn-success"]'
 
     def __init__(self, driver):
         super().__init__(driver)
 
-    def select_target_embassy(self):
-        self.click(self.ELEMENT + self.TARGET_TYPE_OF_APPLICATION_VISA_D)
+    def select_target_embassy(self, target_application_type: str = TARGET_TYPE_OF_APPLICATION_VISA_D):
+        self.click(self.ELEMENT + target_application_type)
         self.click(self.ELEMENT + self.SAVE_BTN)
         return MainPage(self.driver)
 
@@ -131,6 +133,7 @@ class MainPage(BaseElementActions):
     RE_EMAIL_ADDRESS_INPUT = '//label[contains(text(), "Re-enter the email address")]/..//input'
     CITIZENSHIP_INPUT = '//input[@id="label1000"]'
     PASSPORT_NUMBER_INPUT = '//input[@id="label1001"]'
+    RESIDENCE_PERMIT_DATA_INPUT = '//input[@id="label1002"]'
     IHAVE_READ_POLICY_CHECKBOX = '//input[@id="slabel13"]'
     PERSONAL_DATA_CHECKBOX = '//input[@id="label13"]'
     SELECT_APPOINTMENT_BUTTON = '//button[text()="Select date"]'
@@ -197,6 +200,11 @@ class MainPage(BaseElementActions):
     def fill_passport_number_input(self, passport_number: str):
         logger.info(f"[ACTION] Filling Passport Number Input with '{passport_number}'")
         self.fill(self.PASSPORT_NUMBER_INPUT, passport_number)
+
+
+    def fill_residence_permit_data_input(self, residence_permit_data: str):
+        logger.info(f"[ACTION] Filling Passport Number Input with '{residence_permit_data}'")
+        self.fill(self.RESIDENCE_PERMIT_DATA_INPUT, residence_permit_data)
 
     def _save_screenshot_and_set_tg(self, telegram_bot):
         screenshot_path = f"screenshot_{int(time.time())}.png"
