@@ -16,7 +16,7 @@ class BaseElementActions:
 
     def wait_for_element_in_center(self, element):
         try:
-            WebDriverWait(self.driver, 2).until(  # Можно дать маленький таймаут, типа 2 сек
+            WebDriverWait(self.driver, 0.5).until(
                 lambda driver: abs(
                     driver.execute_script(
                         "return arguments[0].getBoundingClientRect().top + arguments[0].getBoundingClientRect().height/2 - window.innerHeight/2;",
@@ -224,7 +224,7 @@ class MainPage(BaseElementActions):
         try:
             modal_no_available_appointment = self.find_element(self.NO_AVAILABLE_APPOINTMENTS_FRAME)
             if modal_no_available_appointment.is_displayed():
-                TelegramNotification().send_message("AVAILABLE APPOINTMENT NOT FOUND (SOSI HUY)")
+                TelegramNotification().send_message("AVAILABLE APPOINTMENT IS NOT FOUND")
                 self._save_screenshot_and_set_tg(telegram_bot)
                 return False
             self._save_screenshot_and_set_tg(telegram_bot)
@@ -233,6 +233,6 @@ class MainPage(BaseElementActions):
             logger.info(f"FOUND APPOINTMENT!: {e}")
             self._save_screenshot_and_set_tg(telegram_bot)
             telegram_bot.send_message(
-                "!!!!!HURRY UP PIDR, I FOUND APPOINTMENTS!!!!!\n!!!!!HURRY UP PIDR, I FOUND APPOINTMENTS!!!!!"
+                "!!!!!HURRY UP PIDR, I FOUND APPOINTMENTS!!!!!\n!!!!!HURRY UP, I FOUND APPOINTMENTS!!!!!"
             )
             return False

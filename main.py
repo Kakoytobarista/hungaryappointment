@@ -18,7 +18,7 @@ def get_public_ip() -> str:
         logger.warning(f"Не удалось получить публичный IP: {e}")
         return "Неизвестен"
 
-def main(use_proxy: bool = False, docker = False, belgrade=True):
+def main(use_proxy: bool = False, docker = False, belgrade=True, make_appointment_local: bool = False):
     logger.info(f'RUN AT {datetime.now()}')
     logger.info(f"Публичный IP: {get_public_ip()}")
     target_embassy = None
@@ -88,7 +88,12 @@ def main(use_proxy: bool = False, docker = False, belgrade=True):
     # Нажимаем "Select date"
     main_page.click_select_appointment_button()
     main_page.is_available_appointment_found()
+    if make_appointment_local:
+        logger.info("MAKE APPOINTMENT FASTER! you have 16 minutes")
+        time.sleep(1000)
+
     driver.quit()
+    return
 
 
 logger.info("START SCRIPT:")
@@ -98,3 +103,12 @@ if platform.system() == 'Darwin':
 
 else:
     main(use_proxy=False, belgrade=True, docker=True)
+
+
+# MAKE APPOINTMENT LOCAL:
+# make_appointment_local = False
+# if make_appointment_local:
+#     main(use_proxy=False, belgrade=True, make_appointment_local=True)
+
+
+# Публичный IP: 20.25.193.43
