@@ -1,26 +1,44 @@
 import os
 import time
 from datetime import datetime
+import requests
 
 from src.logger import logger
 from src.parsing import MainPage
-from src.utils import get_random_proxy, load_proxies, check_proxy
+from src.utils import get_random_proxy, load_proxies, check_proxy, ProxyConfig
 
 
-def main():
-    proxies_path = os.path.abspath('proxies.txt')
-    proxy_list = load_proxies(proxies_path)
+def get_public_ip() -> str:
+    try:
+        response = requests.get('https://api.ipify.org?format=text', timeout=5)
+        response.raise_for_status()
+        return response.text
+    except Exception as e:
+        logger.warning(f"Не удалось получить публичный IP: {e}")
+        return "Неизвестен"
+
+def main(use_proxy: bool = False):
     logger.info(f'RUN AT {datetime.now()}')
+    logger.info(f"Публичный IP: {get_public_ip()}")
 
-    while True:
-        proxy_string = get_random_proxy(proxy_list)
-        driver = check_proxy(proxy_string)
-        if driver:
-            logger.info(f"Прокси {proxy_string} работает!")
-            break
-        else:
+    if use_proxy:
+        proxy_list = load_proxies(os.path.abspath('proxies.txt'))
+        while True:
+            proxy_string = get_random_proxy(proxy_list)
+            config = ProxyConfig(enabled=True, proxy_string=proxy_string, docker=True)
+            driver = check_proxy(config)
+            if driver:
+                logger.info(f"Прокси {proxy_string} работает!")
+                break
             logger.info(f"Ошибка с прокси {proxy_string}, пробуем снова...")
             time.sleep(2)
+    else:
+        config = ProxyConfig(enabled=False, docker=True)
+        driver = check_proxy(config)
+
+    if not driver:
+        logger.error("Не удалось запустить драйвер.")
+        return
 
     main_page = MainPage(driver)
 
