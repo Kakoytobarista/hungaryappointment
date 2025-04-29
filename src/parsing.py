@@ -101,6 +101,8 @@ class SelectConsulateModal(BaseElementActions):
         super().__init__(driver)
 
     def select_target_embassy(self, target_embassy: str = SUBBOTICA_EMBASSY):
+        if not target_embassy:
+            target_embassy = self.SUBBOTICA_EMBASSY
         self.click(self.ELEMENT + target_embassy)
         return MainPage(self.driver)
 
@@ -115,6 +117,8 @@ class SelectTypeOfApplicationModal(BaseElementActions):
         super().__init__(driver)
 
     def select_target_embassy(self, target_application_type: str = TARGET_TYPE_OF_APPLICATION_VISA_D):
+        if not target_application_type:
+            target_application_type = self.TARGET_TYPE_OF_APPLICATION_VISA_D
         self.click(self.ELEMENT + target_application_type)
         self.click(self.ELEMENT + self.SAVE_BTN)
         return MainPage(self.driver)

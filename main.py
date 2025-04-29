@@ -1,4 +1,5 @@
 import os
+import platform
 import time
 from datetime import datetime
 import requests
@@ -17,15 +18,21 @@ def get_public_ip() -> str:
         logger.warning(f"Не удалось получить публичный IP: {e}")
         return "Неизвестен"
 
-def main(use_proxy: bool = True, belgrade=True):
+def main(use_proxy: bool = False, docker = False, belgrade=True):
     logger.info(f'RUN AT {datetime.now()}')
     logger.info(f"Публичный IP: {get_public_ip()}")
+    target_embassy = None
+    target_application = None
+
+    if belgrade:
+        target_embassy = SelectConsulateModal.BELGRADE_EMBASSY
+        target_application = SelectTypeOfApplicationModal.TARGET_TYPE_OF_APPLICATION_BELGRADE_VISA_D
 
     if use_proxy:
         proxy_list = load_proxies(os.path.abspath('proxies.txt'))
         while True:
             proxy_string = get_random_proxy(proxy_list)
-            config = ProxyConfig(enabled=True, proxy_string=proxy_string, docker=False)
+            config = ProxyConfig(enabled=True, proxy_string=proxy_string, docker=docker)
             driver = check_proxy(config)
             if driver:
                 logger.info(f"Прокси {proxy_string} работает!")
@@ -33,7 +40,7 @@ def main(use_proxy: bool = True, belgrade=True):
             logger.info(f"Ошибка с прокси {proxy_string}, пробуем снова...")
             time.sleep(2)
     else:
-        config = ProxyConfig(enabled=False, docker=True)
+        config = ProxyConfig(enabled=False, docker=docker)
         driver = check_proxy(config)
 
     if not driver:
@@ -47,12 +54,12 @@ def main(use_proxy: bool = True, belgrade=True):
 
     # Выбираем консульство
     select_consulate_modal = main_page.click_select_consulate_modal_button()
-    main_page = select_consulate_modal.select_target_embassy(target_embassy=SelectConsulateModal.BELGRADE_EMBASSY)
+    main_page = select_consulate_modal.select_target_embassy(target_embassy=target_embassy)
 
     # Выбираем тип визы
     select_type_modal = main_page.click_select_type_of_application_modal_button()
     main_page = select_type_modal.select_target_embassy(
-        target_application_type=SelectTypeOfApplicationModal.TARGET_TYPE_OF_APPLICATION_BELGRADE_VISA_D
+        target_application_type=target_application
     )
 
     # Заполняем форму
@@ -85,7 +92,9 @@ def main(use_proxy: bool = True, belgrade=True):
 
 
 logger.info("START SCRIPT:")
-main()
 
-# Публичный IP: 172.183.111.114
-# Публичный IP: 172.190.111.82
+if platform.system() == 'Darwin':
+    main(use_proxy=False, belgrade=True, docker=False)
+
+else:
+    main(use_proxy=False, belgrade=True, docker=True)
