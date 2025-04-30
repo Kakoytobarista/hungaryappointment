@@ -2,8 +2,6 @@ name: Check Embassy Slot
 
 
 on:
-#  schedule:
-#  - cron: "*/2 5-15 * * 1-5"
   push:
     branches:
       - main
