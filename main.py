@@ -96,13 +96,13 @@ def main(use_proxy: bool = False, docker = False, belgrade=True, make_appointmen
     return
 
 
-logger.info("START SCRIPT:")
+# logger.info("START SCRIPT:")
 
-if platform.system() == 'Darwin':
-    main(use_proxy=False, belgrade=True, docker=False)
+# if platform.system() == 'Darwin':
+ #    main(use_proxy=False, belgrade=True, docker=False)
 
-else:
-    main(use_proxy=False, belgrade=True, docker=True)
+# else:
+ #    main(use_proxy=False, belgrade=True, docker=True)
 
 
 # MAKE APPOINTMENT LOCAL:
