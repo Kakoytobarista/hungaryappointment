@@ -106,7 +106,7 @@ else:
 
 
 # MAKE APPOINTMENT LOCAL:
-# make_appointment_local = False
+# make_appointment_local = True
 # if make_appointment_local:
 #     main(use_proxy=False, belgrade=True, make_appointment_local=True)
 

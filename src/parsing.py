@@ -210,10 +210,10 @@ class MainPage(BaseElementActions):
         logger.info(f"[ACTION] Filling Passport Number Input with '{residence_permit_data}'")
         self.fill(self.RESIDENCE_PERMIT_DATA_INPUT, residence_permit_data)
 
-    def _save_screenshot_and_set_tg(self, telegram_bot):
+    def _save_screenshot_and_set_tg(self, telegram_bot, is_appointment_found):
         screenshot_path = f"screenshot_{int(time.time())}.png"
         self.driver.save_screenshot(screenshot_path)
-        telegram_bot.send_photo(screenshot_path)
+        telegram_bot.send_photo(screenshot_path, is_appointment_found)
         if os.path.exists(screenshot_path):
             os.remove(screenshot_path)
             logger.info(f"Screenshot {screenshot_path} deleted.")
@@ -222,17 +222,28 @@ class MainPage(BaseElementActions):
         logger.info("[ACTION] Checking if 'No Available Appointments' frame is displayed")
         telegram_bot = TelegramNotification()
         try:
+
             modal_no_available_appointment = self.find_element(self.NO_AVAILABLE_APPOINTMENTS_FRAME)
             if modal_no_available_appointment.is_displayed():
-                TelegramNotification().send_message("AVAILABLE APPOINTMENT IS NOT FOUND")
-                self._save_screenshot_and_set_tg(telegram_bot)
+                is_appointment_found = False
+                TelegramNotification().send_message("AVAILABLE APPOINTMENT IS NOT FOUND", is_appointment_found)
+                self._save_screenshot_and_set_tg(telegram_bot, is_appointment_found)
                 return False
-            self._save_screenshot_and_set_tg(telegram_bot)
+
+            is_appointment_found = True
+            telegram_bot.send_message(
+                "!!!!!HURRY UP PIDR, I FOUND APPOINTMENTS!!!!!\n!!!!!HURRY UP, I FOUND APPOINTMENTS!!!!!",
+                is_appointment_found
+            )
+            self._save_screenshot_and_set_tg(telegram_bot, is_appointment_found)
             return True
+
         except Exception as e:
             logger.info(f"FOUND APPOINTMENT!: {e}")
-            self._save_screenshot_and_set_tg(telegram_bot)
+            is_appointment_found = True
+            self._save_screenshot_and_set_tg(telegram_bot, is_appointment_found)
             telegram_bot.send_message(
-                "!!!!!HURRY UP PIDR, I FOUND APPOINTMENTS!!!!!\n!!!!!HURRY UP, I FOUND APPOINTMENTS!!!!!"
+                "!!!!!HURRY UP PIDR, I FOUND APPOINTMENTS!!!!!\n!!!!!HURRY UP, I FOUND APPOINTMENTS!!!!!",
+                is_appointment_found
             )
             return False
