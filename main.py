@@ -110,5 +110,3 @@ else:
 # if make_appointment_local:
 #     main(use_proxy=False, belgrade=True, make_appointment_local=True)
 
-
-# Публичный IP: 20.25.193.43
